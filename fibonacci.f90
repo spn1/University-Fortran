@@ -1,0 +1,27 @@
+PROGRAM fibonacci
+  !spec
+  IMPLICIT NONE
+  REAL,EXTERNAL :: next_fibon
+  REAL :: fa = 1, fb = 1, fc
+  INTEGER :: i
+  !exec
+  PRINT*, "The First 20 Numbers in the Fibonacci Sequence: "
+  PRINT*, fa
+  PRINT*, fb
+  DO i=1,20
+    fc = next_fibon(fa, fb)
+    PRINT*, fc
+    fa = fb
+    fb = fc
+  END DO
+END PROGRAM fibonacci
+
+FUNCTION next_fibon(a, b)
+  !spec
+  IMPLICIT NONE
+  REAL,INTENT(IN) :: a, b
+  REAL :: next_fibon
+
+  !exec
+  next_fibon = a + b
+END FUNCTION next_fibon
